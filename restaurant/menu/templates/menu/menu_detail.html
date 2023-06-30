@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ menu.title }}</h1>
+
+  <p><strong>Category:</strong> <a href="">{{ menu.category }}</a></p>
+  <!-- category detail link not yet defined -->
+  <p><strong>Summary:</strong> {{ menu.summary }}</p>
+  <p><strong>Price:</strong> {{ menu.price }}</p>
+  
+{% endblock %}

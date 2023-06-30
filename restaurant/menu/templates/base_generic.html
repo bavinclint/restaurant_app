@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+        <title>Local Restaurant</title>
+    {% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet"> 
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet"/>
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}"  rel="stylesheet"/>
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}"  rel="stylesheet"/>
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}"  rel="stylesheet"/>
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}"  rel="stylesheet"/>
+
+    <!-- Add additional CSS in static file -->
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+  {% block header %}
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center fixed-top topbar-transparent">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-center justify-content-lg-start">
+      <i class="bi bi-phone d-flex align-items-center"><span>+254 799 999 999</span></i>
+      <i class="bi bi-clock ms-4 d-none d-lg-flex align-items-center"><span>Mon-Sat: 11:00 AM - 23:00 PM</span></i>
+    </div>
+  </section>
+    
+
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      
+        <div class="logo me-auto">
+          <h1><a href="{% url 'index' %}">Local Restaurant</a></h1>
+        </div>
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+              <li><a class="nav-link scrollto" href="#about">About</a></li>
+              <li><a class="nav-link scrollto"  href="{% url 'menus' %}">Menu</a></li>
+              <li><a class="nav-link scrollto"  href="{% url 'category' %}">Category</a></li>
+              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+              
+              <ul class="sidebar-nav">
+              {% if user.is_authenticated %}
+                <li>User: {{ user.get_username }}</li>
+                <li><a class="nav-link scrollto" href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+              {% else %}
+                <li><a class="nav-link scrollto" href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+              {% endif %}
+              </ul>
+            
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          
+          </nav>
+
+          <a href="#book-a-table" class="book-a-table-btn scrollto">Book a table</a>
+          <a class="book-a-table-btn scrollto" href="#signup">SignUp</a>
+    </div>
+  </header>  
+  {% endblock %}  
+
+  {% block content %}
+  {% endblock %}
+      
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/js/main.js' %}"></script>
+
+</body>
+</html>

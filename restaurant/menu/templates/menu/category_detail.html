@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Category: {{ category.name }} </h1>
+<p>{{category.name}}</p>
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Menus</h4>
+
+<dl>
+{% for menu in category.menu_set.all %}
+  <dt><a href="{% url 'menu-detail' menu.pk %}">{{menu}}</a> </dt>
+  <dd>{{menu.summary}}</dd>
+{% endfor %}
+</dl>
+
+</div>
+{% endblock %}
